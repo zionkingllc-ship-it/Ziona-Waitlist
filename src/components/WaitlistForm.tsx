@@ -38,7 +38,7 @@ const WaitlistForm = () => {
       method="POST"
       data-netlify="true"
       onSubmit={handleSubmit}
-      className="max-w-md mx-auto space-y-5"
+      className="max-w-md mx-auto space-y-5 text-left"
     >
       <input type="hidden" name="form-name" value="waitlist" />
 
