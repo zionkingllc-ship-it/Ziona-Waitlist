@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 282 64% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 282 64% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 282 64% 12%;
+
+    --primary: 282 64% 35%;
+    --primary-foreground: 0 0% 100%;
+    --primary-dark: 284 65% 28%;
+    --primary-light: 282 51% 46%;
+    --primary-tint: 279 48% 89%;
+
+    --secondary: 279 48% 89%;
+    --secondary-foreground: 282 64% 12%;
+
+    --muted: 280 20% 96%;
+    --muted-foreground: 280 10% 46%;
+
+    --accent: 37 100% 33%;
+    --accent-foreground: 0 0% 100%;
+    --accent-light: 38 77% 45%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 280 20% 90%;
+    --input: 280 20% 90%;
+    --ring: 282 64% 35%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 282 64% 35%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 279 48% 89%;
+    --sidebar-accent-foreground: 282 64% 12%;
+    --sidebar-border: 280 20% 90%;
+    --sidebar-ring: 282 64% 35%;
+
+    --font-heading: 'DM Serif Display', serif;
+    --font-body: 'Inter', sans-serif;
+  }
+
+  .dark {
+    --background: 282 64% 4%;
+    --foreground: 280 20% 96%;
+    --card: 282 50% 8%;
+    --card-foreground: 280 20% 96%;
+    --popover: 282 50% 8%;
+    --popover-foreground: 280 20% 96%;
+    --primary: 282 51% 46%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 282 30% 15%;
+    --secondary-foreground: 280 20% 96%;
+    --muted: 282 30% 15%;
+    --muted-foreground: 280 15% 60%;
+    --accent: 38 77% 45%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 282 30% 18%;
+    --input: 282 30% 18%;
+    --ring: 282 51% 46%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+  }
+
+  .bg-hero-gradient {
+    background: linear-gradient(180deg, hsl(var(--primary-tint)) 0%, hsl(var(--background)) 100%);
+  }
+
+  .bg-section-alt {
+    background: hsl(var(--muted));
+  }
+
+  .bg-cta-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-dark)) 100%);
+  }
+}
