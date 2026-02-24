@@ -1,73 +1,63 @@
-# Welcome to your Lovable project
+# Ziona
 
-## Project info
+**A Social Platform That Puts Christian Faith First.**
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+Ziona is a modern web application built to foster a faith-centered community. It provides features for faith-based content discovery, community engagement (likes, comments, saves), and a "Faith Circle" for deeper fellowship.
 
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
+## Tech Stack
 
 This project is built with:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- **Frontend Framework:** React
+- **Build Tool:** Vite
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **UI Components:** shadcn-ui
 
-## How can I deploy this project?
+## Getting Started
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+To run this project locally, follow these steps:
 
-## Can I connect a custom domain to my Lovable project?
+### Prerequisites
 
-Yes, you can!
+You will need Node.js and npm installed on your machine.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### Installation
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Bhuchee/ZionaTest.git
+   ```
+
+2. Navigate into the project directory:
+   ```bash
+   cd ZionaTest
+   ```
+
+3. Install the dependencies:
+   ```bash
+   npm install
+   ```
+   *(Note: If `npm install` hangs or fails, you may try using an alternative package manager like `bun` or `yarn` if available, or try clearing your npm cache).*
+
+### Running the Development Server
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Alternatively, if Vite is not running globally, you can run:
+```bash
+./node_modules/.bin/vite
+```
+
+The application will typically be available at `http://localhost:8080` or `http://localhost:5173`. Check your terminal output for the exact local address.
+
+## Features
+
+- **Faith-Centered Content Feed:** Discover and engage with Christian content.
+- **Community Engagement Tools:** Interact with posts through likes, comments, and saves.
+- **Faith Circle:** Specifically designed for deeper fellowship and connection.
+- **Christian Moderation Standards:** Adheres to community guidelines that reflect Christian values.
