@@ -2,7 +2,7 @@
 
 **A Social Platform That Puts Christian Faith First.**
 
-Ziona is a modern web application built to foster a faith-centered community. It provides features for faith-based content discovery, community engagement (likes, comments, saves), and a "Faith Circle" for deeper fellowship.
+Ziona is a modern web application built by ZionKing LLC to foster a faith-centered community. It provides features for faith-based content discovery, community engagement (likes, comments, saves), and a "Faith Circle" for deeper fellowship.
 
 ## Tech Stack
 
