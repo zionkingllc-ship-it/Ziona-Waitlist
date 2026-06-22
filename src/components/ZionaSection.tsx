@@ -9,7 +9,7 @@ const ZionaSection = () => {
     <>
 
       <section className="flex flex-col-reverse items-center gap-8 mt-[59px] px-4 lg:px-20 bg-[#e32bcf] pt-16 pb-10 lg:flex-row lg:justify-between lg:gap-12 lg:pt-17 lg:pb-22">
-        <img src={image94} alt="Zionking app preview 1" className="" />
+        <img src={image94} alt="Zionking app preview 1" className="" loading="lazy" decoding="async" />
         <div className="flex flex-col items-center gap-4 lg:gap-11 lg:items-start lg:max-w-[737px]">
           <h3 className="text-[#fdedea] text-3xl lg:text-6xl font-normal font-bree text-center lg:text-left">Guided Moments for Your Daily Walk</h3>
           <p className="text-[#fdedea] text-base lg:text-2xl font-normal text-center lg:text-left">Engage with daily bible devotions and reading plans shared in your circles. Designed to inspire reflection, spark conversations, and guide your everyday life alongside your local faith church community.</p>

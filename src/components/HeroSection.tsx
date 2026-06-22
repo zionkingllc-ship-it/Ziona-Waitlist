@@ -31,7 +31,7 @@ const HeroSection = () => {
 
           {/* Google Play */}
           <button className="flex items-center justify-center gap-2 rounded-2xl bg-black px-3 py-2 text-white transition hover:scale-[1.02] hover:opacity-90 lg:gap-3 lg:px-5 lg:py-3">
-            <img src={playstore} alt="playstore" className="h-5 w-5 lg:h-7 lg:w-7" />
+            <img src={playstore} alt="playstore" className="h-5 w-5 lg:h-7 lg:w-7" loading="eager" decoding="async" />
 
             <div className="flex flex-col items-start leading-tight">
               <span className="text-[9px] font-medium uppercase tracking-wide text-white/70 lg:text-[11px]">
@@ -58,16 +58,22 @@ const HeroSection = () => {
             src={image90}
             alt="Zionking app preview 1"
             className="h-auto w-[31%] max-w-[11rem] shrink-0 translate-x-6 sm:max-w-[13rem] sm:translate-x-8 lg:max-w-[18rem] lg:translate-x-20"
+            loading="eager"
+            decoding="async"
           />
           <img
             src={image86}
             alt="Zionking app preview 2"
             className="z-10 h-auto w-[31%] max-w-[11rem] shrink-0 sm:max-w-[13rem] lg:max-w-[18rem]"
+            loading="eager"
+            decoding="async"
           />
           <img
             src={image88}
             alt="Zionking app preview 3"
             className="h-auto w-[31%] max-w-[11rem] shrink-0 -translate-x-6 sm:max-w-[13rem] sm:-translate-x-8 lg:max-w-[18rem] lg:-translate-x-20"
+            loading="eager"
+            decoding="async"
           />
         </div>
       </section>

@@ -26,7 +26,7 @@ const Navbar = () => {
           <div className="flex items-center justify-between gap-4">
             <div className="flex flex-1 justify-start">
               <Link to="/">
-                <img src="/Nav-Logo.png" alt="zionking-logo" width={120} height={40} />
+                <img src="/Nav-Logo.png" alt="zionking-logo" width={120} height={40} loading="eager" decoding="async" />
               </Link>
             </div>
             <div className="hidden lg:flex items-center justify-center gap-6">

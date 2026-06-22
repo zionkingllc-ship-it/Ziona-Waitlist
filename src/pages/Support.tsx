@@ -27,13 +27,13 @@ const Support = () => {
               Support team
             </Button>
           </div>
-          <img src={image107} alt="sample-image" />
+          <img src={image107} alt="sample-image" loading="lazy" decoding="async" />
         </section>
         <section className="mt-[60px] px-4 lg:px-16 py-24 bg-gradient-to-b from-[#faf2e5] from 20% to-[#fdf5ef] inline-flex flex-col justify-start items-start gap-10 overflow-hidden">
           <h3 className="self-stretch justify-start text-[#1a131c] text-4xl lg:text-6xl font-normal font-bree">Build With Us, Keep It Free for Everyone</h3>
           <p className="self-stretch justify-start text-[#423348] text-sm lg:text-2xl font-normal">We’ve chosen to keep Ziona free so anyone, anywhere, can access a positive Christian community. No subscriptions. No locked features. Just a space to connect and grow in faith.</p>
           <div className="flex flex-col-reverse lg:flex-row gap-8 lg:gap-[38px]">
-            <img src={image96} alt="sample-support-image" className="rounded-3xl" />
+            <img src={image96} alt="sample-support-image" className="rounded-3xl" loading="lazy" decoding="async" />
             <div className="space-y-[14px]">
               <p className="w-auto lg:w-96 justify-start text-black text-sm lg:text-2xl font-normal">But building and maintaining this kind of platform takes time, care, and resources.</p>
               <p className="w-auto lg:w-96 justify-start text-black text-sm lg:text-2xl font-semibold">That’s where you come in.</p>
@@ -42,7 +42,7 @@ const Support = () => {
         </section>
         <section className="mt-[60px] px-4 lg:px-16 inline-flex flex-col justify-start items-start gap-10 overflow-hidden">
           <div className="flex flex-col-reverse lg:flex-row lg:justify-between gap-8 lg:gap-[38px]">
-            <img src={image108} alt="sample-image" className="rounded-3xl" />
+            <img src={image108} alt="sample-image" className="rounded-3xl" loading="lazy" decoding="async" />
             <div className="">
               <h3 className="self-stretch justify-center lg:justify-start text-[#1a131c] text-3xl lg:text-6xl font-normal font-bree">Why your support matters</h3>
               <div className="p-0 lg:px-8 lg:py-5">
