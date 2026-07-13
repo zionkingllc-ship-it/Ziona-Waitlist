@@ -57,7 +57,7 @@ const Footer = () => {
           <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
             <div className="flex flex-col gap-4 lg:gap-8">
               <Link to="/" className="inline-flex w-fit items-center">
-                <img src="/White-logo.png" alt="Ziona logo" className="h-10 w-auto lg:h-12" />
+                <img src="/White-logo.png" alt="Ziona logo" className="h-10 w-auto lg:h-12" loading="eager" decoding="async" />
               </Link>
 
               <h2 className="font-bree text-lg leading-[1.3] text-white lg:hidden">

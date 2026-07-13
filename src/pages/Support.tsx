@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, FormEvent } from "react";
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import {
   Dialog,
   DialogClose,
@@ -12,8 +13,96 @@ import image108 from "@/assets/image 108.png"
 import image107 from "@/assets/image 107.png"
 import image96 from "@/assets/image 96.png"
 
+type DonationType = "ONE_TIME" | "MONTHLY";
+
+type DonationFormState = {
+  name: string;
+  email: string;
+  amount: string;
+};
+
+type DonationSubmissionState = {
+  type: "success" | "error";
+  message: string;
+};
+
 const Support = () => {
+  const [selectedDonationType, setSelectedDonationType] = useState<DonationType | null>(null);
+  const [isFormModalOpen, setIsFormModalOpen] = useState(false);
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+  const [formState, setFormState] = useState<DonationFormState>({
+    name: "",
+    email: "",
+    amount: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submissionState, setSubmissionState] = useState<DonationSubmissionState | null>(null);
+
+  const handleSupportClick = (type: DonationType) => {
+    setSelectedDonationType(type);
+    setIsFormModalOpen(true);
+  };
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const name = formState.name.trim();
+    const email = formState.email.trim();
+    const amount = formState.amount.trim();
+
+    if (!name || !email || !amount) {
+      setSubmissionState({
+        type: "error",
+        message: "Please fill in all fields.",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmissionState(null);
+
+    try {
+      // const baseUrl = import.meta.env.VITE_GRAPHQL_URL?.replace("/graphql", "") || "";
+      const baseUrl = "https://api.staging.ziona.app/"
+      const endpoint = selectedDonationType === "ONE_TIME"
+        ? `${baseUrl}api/payments/support-once`
+        : `${baseUrl}api/payments/support-monthly`;
+
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          amountUsd: parseFloat(amount).toFixed(2),
+          email,
+          name,
+        }),
+      });
+
+      if (!response.ok) {
+        // Read the actual JSON error from the backend instead of a generic message
+        const errorData = await response.json().catch(() => ({}));
+        const errorMessage = errorData.message || "Unable to process your donation right now. Please try again.";
+        throw new Error(errorMessage);
+      }
+
+      setIsFormModalOpen(false);
+      setIsSuccessModalOpen(true);
+      setFormState({
+        name: "",
+        email: "",
+        amount: "",
+      });
+    } catch (error) {
+      setSubmissionState({
+        type: "error",
+        message: error instanceof Error ? error.message : "Something went wrong while processing your donation.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -23,17 +112,27 @@ const Support = () => {
           <div className="flex flex-col gap-6">
             <h3 className="text-center lg:text-left text-[#1a131c] text-4xl lg:text-6xl font-normal font-bree">Grow Something Meaningful Together</h3>
             <p className="text-center lg:text-left text-[#423348] text-2xl font-normal">Ziona is built to be a space where faith, connection, and encouragement can thrive—freely and openly for everyone. Your support helps us keep it that way, while building new ways for people to grow in faith and community.</p>
-            <Button type="button" variant="navbarCta" className="mt-6 w-full lg:w-[438px]">
+            <Button
+              type="button"
+              variant="navbarCta"
+              className="mt-6 w-full lg:w-[438px]"
+              onClick={() => {
+                const element = document.getElementById("support-options");
+                if (element) {
+                  element.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+            >
               Support team
             </Button>
           </div>
-          <img src={image107} alt="sample-image" />
+          <img src={image107} alt="sample-image" loading="lazy" decoding="async" />
         </section>
         <section className="mt-[60px] px-4 lg:px-16 py-24 bg-gradient-to-b from-[#faf2e5] from 20% to-[#fdf5ef] inline-flex flex-col justify-start items-start gap-10 overflow-hidden">
           <h3 className="self-stretch justify-start text-[#1a131c] text-4xl lg:text-6xl font-normal font-bree">Build With Us, Keep It Free for Everyone</h3>
           <p className="self-stretch justify-start text-[#423348] text-sm lg:text-2xl font-normal">We’ve chosen to keep Ziona free so anyone, anywhere, can access a positive Christian community. No subscriptions. No locked features. Just a space to connect and grow in faith.</p>
           <div className="flex flex-col-reverse lg:flex-row gap-8 lg:gap-[38px]">
-            <img src={image96} alt="sample-support-image" className="rounded-3xl" />
+            <img src={image96} alt="sample-support-image" className="rounded-3xl" loading="lazy" decoding="async" />
             <div className="space-y-[14px]">
               <p className="w-auto lg:w-96 justify-start text-black text-sm lg:text-2xl font-normal">But building and maintaining this kind of platform takes time, care, and resources.</p>
               <p className="w-auto lg:w-96 justify-start text-black text-sm lg:text-2xl font-semibold">That’s where you come in.</p>
@@ -42,7 +141,7 @@ const Support = () => {
         </section>
         <section className="mt-[60px] px-4 lg:px-16 inline-flex flex-col justify-start items-start gap-10 overflow-hidden">
           <div className="flex flex-col-reverse lg:flex-row lg:justify-between gap-8 lg:gap-[38px]">
-            <img src={image108} alt="sample-image" className="rounded-3xl" />
+            <img src={image108} alt="sample-image" className="rounded-3xl" loading="lazy" decoding="async" />
             <div className="">
               <h3 className="self-stretch justify-center lg:justify-start text-[#1a131c] text-3xl lg:text-6xl font-normal font-bree">Why your support matters</h3>
               <div className="p-0 lg:px-8 lg:py-5">
@@ -57,33 +156,33 @@ const Support = () => {
             </div>
           </div>
         </section>
-        <section className="flex flex-col items-center px-4 lg:px-16 mt-[91px] lg:mt-[113px]">
+        <section id="support-options" className="flex flex-col items-center px-4 lg:px-16 mt-[91px] lg:mt-[113px]">
           <h3 className="self-stretch text-center text-[#1a131c] text-3xl lg:text-6xl font-normal font-bree">Choose How You’d Like to Support</h3>
           <div className="mt-8 lg:mt-[56px] mx-auto flex flex-col lg:flex-row items-center justify-center gap-[30px] lg:gap-[23px]">
             <div className="w-80 h-[218px] lg:h-[322px] self-stretch rounded-xl bg-[var(--primary-brand)] px-6 py-5 inline-flex flex-col items-start">
               <div className="self-stretch flex flex-col gap-4">
-                <h3 className=" justify-start items-start text-white text-2xl font-normal">One time suport</h3>
+                <h3 className=" justify-start items-start text-white text-2xl font-normal">One time support</h3>
                 <p className=" text-white text-base font-normal">A simple way to contribute whenever you feel led.</p>
               </div>
               <Button
                 type="button"
                 variant="navbarCta"
                 className="mt-6 w-full bg-white text-black hover:bg-white/90 lg:mt-auto"
-                onClick={() => setIsSuccessModalOpen(true)}
+                onClick={() => handleSupportClick("ONE_TIME")}
               >
                 Support once
               </Button>
             </div>
             <div className="w-80 h-[218px] lg:h-[322px] self-stretch rounded-xl bg-[var(--primary-brand)] px-6 py-5 inline-flex flex-col items-start">
               <div className="self-stretch flex flex-col gap-4">
-                <h3 className=" justify-start items-start text-white text-2xl font-normal">Monthly suport</h3>
+                <h3 className=" justify-start items-start text-white text-2xl font-normal">Monthly support</h3>
                 <p className=" text-white text-base font-normal">Support consistently and help us plan, build, and grow with stability.</p>
               </div>
               <Button
                 type="button"
                 variant="navbarCta"
                 className="mt-6 w-full bg-white text-black hover:bg-white/90 lg:mt-auto"
-                onClick={() => setIsSuccessModalOpen(true)}
+                onClick={() => handleSupportClick("MONTHLY")}
               >
                 Support monthly
               </Button>
@@ -106,6 +205,95 @@ const Support = () => {
           </div>
         </section>
 
+        {/* Donation Form Modal */}
+        <Dialog open={isFormModalOpen} onOpenChange={setIsFormModalOpen}>
+          <DialogContent className="w-[calc(100%-2rem)] max-w-2xl rounded-[2rem] border-none bg-white px-5 py-12 shadow-2xl sm:px-8 lg:px-16 lg:py-16">
+            <div className="flex flex-col gap-6">
+              <DialogTitle className="text-center font-bree text-3xl font-normal leading-tight text-black sm:text-4xl">
+                {selectedDonationType === "ONE_TIME" ? "One Time Donation" : "Monthly Donation"}
+              </DialogTitle>
+              <DialogDescription className="text-center text-base leading-7 text-black sm:text-lg">
+                {selectedDonationType === "ONE_TIME"
+                  ? "Thank you for your one-time support!"
+                  : "Thank you for your ongoing monthly support!"}
+              </DialogDescription>
+
+              <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="donation-name" className="text-base font-medium text-neutral-text-primary">
+                    Your name
+                  </label>
+                  <Input
+                    id="donation-name"
+                    placeholder="Enter your name"
+                    className="h-14 rounded-xl border-neutral-border-secondary bg-neutral-background-secondary px-4 text-base"
+                    value={formState.name}
+                    onChange={(event) =>
+                      setFormState((currentState) => ({ ...currentState, name: event.target.value }))
+                    }
+                    disabled={isSubmitting}
+                  />
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="donation-email" className="text-base font-medium text-neutral-text-primary">
+                    Email address
+                  </label>
+                  <Input
+                    id="donation-email"
+                    type="email"
+                    placeholder="Enter your email"
+                    className="h-14 rounded-xl border-neutral-border-secondary bg-neutral-background-secondary px-4 text-base"
+                    value={formState.email}
+                    onChange={(event) =>
+                      setFormState((currentState) => ({ ...currentState, email: event.target.value }))
+                    }
+                    disabled={isSubmitting}
+                  />
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="donation-amount" className="text-base font-medium text-neutral-text-primary">
+                    Donation amount (USD)
+                  </label>
+                  <Input
+                    id="donation-amount"
+                    type="number"
+                    placeholder="Enter amount (e.g. 10 = $10)"
+                    step="0.01"
+                    min="1"
+                    max="100000000"
+                    className="h-14 rounded-xl border-neutral-border-secondary bg-neutral-background-secondary px-4 text-base"
+                    value={formState.amount}
+                    onChange={(event) =>
+                      setFormState((currentState) => ({ ...currentState, amount: event.target.value }))
+                    }
+                    disabled={isSubmitting}
+                  />
+                </div>
+
+                {submissionState ? (
+                  <p className={`text-sm ${submissionState.type === "success" ? "text-green-700" : "text-red-600"}`}>
+                    {submissionState.message}
+                  </p>
+                ) : null}
+
+                <div className="flex gap-4 mt-2">
+                  <DialogClose asChild>
+                    <Button type="button" variant="ghost" className="flex-1">
+                      Cancel
+                    </Button>
+                  </DialogClose>
+                  <Button type="submit" variant="navbarCta" className="flex-1" disabled={isSubmitting}>
+                    {isSubmitting ? "Processing..." : "Complete donation"}
+                  </Button>
+                </div>
+              </form>
+            </div>
+          </DialogContent>
+        </Dialog>
+
+        {/* Success Modal */}
         <Dialog open={isSuccessModalOpen} onOpenChange={setIsSuccessModalOpen}>
           <DialogContent className="w-[calc(100%-2rem)] max-w-4xl rounded-[2rem] border-none bg-white px-5 py-12 text-center shadow-2xl sm:px-8 lg:px-16 lg:py-16">
             <div className="mx-auto flex max-w-3xl flex-col items-center gap-5 lg:gap-6">
