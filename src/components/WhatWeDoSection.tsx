@@ -24,7 +24,7 @@ const WhatWeDoSection = () => {
         <p className="mx-auto mt-4 max-w-[50rem] text-center text-sm font-normal text-neutral-text-secondary lg:text-2xl">
           Circles are spaces where people like you come together to share, encourage, and grow.
         </p>
-        <CircleSlider slides={circleSlides} className="mx-auto mt-10 max-w-[78rem] px-4 lg:mt-14 lg:px-12" />
+        <CircleSlider slides={circleSlides} className="mt-10 px-4 lg:mt-14 lg:px-12" />
       </div>
     </section>
   );

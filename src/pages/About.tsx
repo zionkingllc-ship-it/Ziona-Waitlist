@@ -11,7 +11,7 @@ const About = () => {
       <main className="pt-15 lg:pt-20">
         <div className="px-4 lg:px-20">
           <div className="flex flex-col lg:flex-row gap-6">
-            <img src="/ziona-vector.png" alt="ziona-vector" className="mt-5 lg:mt-0 w-[370px] lg:w-[628px]" />
+            <img src="/ziona-vector.png" alt="ziona-vector" className="mt-5 lg:mt-0 w-[370px] lg:w-[628px]" loading="lazy" decoding="async" />
             <div className="w-full lg:w-[628px]">
               <p className="text-base lg:text-lg font-normal mb-6">Ziona is designed to become a global digital community where Christians connect, create faith-centred content, build meaningful relationships, and grow spiritually. Experience a true Christian social app without the distractions, hostility, and algorithmic suppression often experienced on mainstream platforms.</p>
               <p className="text-base lg:text-lg font-normal">The platform will combine:

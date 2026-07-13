@@ -145,22 +145,22 @@ const Contact = () => {
         <div className="hidden lg:block">
           <div className="flex items-start justify-between gap-12 px-4 lg:px-20">
             <div className="flex flex-col">
-              <img src="/ziona-vector.png" alt="ziona-vector" />
+              <img src="/ziona-vector.png" alt="ziona-vector" loading="lazy" decoding="async" />
               <div className="flex items-center px-[54px] justify-evenly mt-2">
                 <a
-                  href="#"
+                  href="https://www.instagram.com/ziona.app?igsh=bmR3aXV5ZGx3ZHo1"
                   className="flex items-center gap-2 rounded-full transition duration-200 hover:scale-110 hover:opacity-90 active:scale-95"
                 >
                   <FaInstagram className="size-6" />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.facebook.com/share/1UN2Xjh7mF/"
                   className="flex items-center gap-1 rounded-full transition duration-200 hover:scale-110 hover:opacity-90 active:scale-95"
                 >
                   <FaFacebook className="size-6" />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/company/zionas/"
                   className="flex items-center gap-1 rounded-full transition duration-200 hover:scale-110 hover:opacity-90 active:scale-95"
                 >
                   <FaLinkedin className="size-6" />
