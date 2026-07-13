@@ -30,6 +30,8 @@ const Support = () => {
   const [selectedDonationType, setSelectedDonationType] = useState<DonationType | null>(null);
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+  const [isFailedModalOpen, setIsFailedModalOpen] = useState(false);
+  const [failedTransactionMessage, setFailedTransactionMessage] = useState("");
   const [formState, setFormState] = useState<DonationFormState>({
     name: "",
     email: "",
@@ -63,7 +65,7 @@ const Support = () => {
 
     try {
       // const baseUrl = import.meta.env.VITE_GRAPHQL_URL?.replace("/graphql", "") || "";
-      const baseUrl = "https://api.staging.ziona.app/"
+      const baseUrl = "https://api.staging.ziona.app/";
       const endpoint = selectedDonationType === "ONE_TIME"
         ? `${baseUrl}api/payments/support-once`
         : `${baseUrl}api/payments/support-monthly`;
@@ -74,7 +76,7 @@ const Support = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          amountUsd: parseFloat(amount).toFixed(2),
+          amount: parseFloat(amount),
           email,
           name,
         }),
@@ -87,20 +89,21 @@ const Support = () => {
         throw new Error(errorMessage);
       }
 
+      const { data } = await response.json();
+
+      if (!data?.checkoutUrl) {
+        throw new Error("Invalid checkout URL received from server.");
+      }
+
+      // Close the form modal and redirect to Stripe checkout
       setIsFormModalOpen(false);
-      setIsSuccessModalOpen(true);
-      setFormState({
-        name: "",
-        email: "",
-        amount: "",
-      });
+      window.location.href = data.checkoutUrl;
     } catch (error) {
-      setSubmissionState({
-        type: "error",
-        message: error instanceof Error ? error.message : "Something went wrong while processing your donation.",
-      });
-    } finally {
       setIsSubmitting(false);
+      const errorMessage = error instanceof Error ? error.message : "Something went wrong while processing your donation.";
+      setFailedTransactionMessage(errorMessage);
+      setIsFormModalOpen(false);
+      setIsFailedModalOpen(true);
     }
   };
 
@@ -310,6 +313,28 @@ const Support = () => {
               <DialogClose asChild>
                 <Button type="button" variant="navbarCta" className="mt-2 min-w-44 px-8">
                   Continue to app
+                </Button>
+              </DialogClose>
+            </div>
+          </DialogContent>
+        </Dialog>
+
+        {/* Failed Transaction Modal */}
+        <Dialog open={isFailedModalOpen} onOpenChange={setIsFailedModalOpen}>
+          <DialogContent className="w-[calc(100%-2rem)] max-w-4xl rounded-[2rem] border-none bg-white px-5 py-12 text-center shadow-2xl sm:px-8 lg:px-16 lg:py-16">
+            <div className="mx-auto flex max-w-3xl flex-col items-center gap-5 lg:gap-6">
+              <DialogTitle className="text-center font-bree text-3xl font-normal leading-tight text-red-600 sm:text-4xl lg:text-6xl">
+                Transaction Failed
+              </DialogTitle>
+              <DialogDescription className="text-center text-base leading-7 text-black sm:text-lg lg:text-xl lg:leading-8">
+                {failedTransactionMessage}
+              </DialogDescription>
+              <p className="max-w-2xl text-center text-base leading-7 text-gray-600 lg:text-lg">
+                Please try again or contact support if you continue to experience issues.
+              </p>
+              <DialogClose asChild>
+                <Button type="button" variant="navbarCta" className="mt-2 min-w-44 px-8">
+                  Try Again
                 </Button>
               </DialogClose>
             </div>
