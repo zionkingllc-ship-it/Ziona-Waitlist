@@ -145,7 +145,7 @@ const Contact = () => {
         <div className="hidden lg:block">
           <div className="flex items-start justify-between gap-12 px-4 lg:px-20">
             <div className="flex flex-col">
-              <img src="/ziona-vector.png" alt="ziona-vector" />
+              <img src="/ziona-vector.png" alt="ziona-vector" loading="lazy" decoding="async" />
               <div className="flex items-center px-[54px] justify-evenly mt-2">
                 <a
                   href="https://www.instagram.com/ziona.app?igsh=bmR3aXV5ZGx3ZHo1"
