@@ -46,6 +46,9 @@ const App = () => (
             <Route path="/contact" element={<Contact />} />
             <Route path="/about" element={<About />} />
             <Route path="/support" element={<Support />} />
+            <Route path="/support/success" element={<Support />} />
+            <Route path="/support/cancel" element={<Support />} />
+            <Route path="/support/cancelled" element={<Support />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />
             <Route path="/community-guidelines" element={<CommunityGuidelines />} />

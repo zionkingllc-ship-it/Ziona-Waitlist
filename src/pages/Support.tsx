@@ -1,4 +1,5 @@
-import { useState, FormEvent } from "react";
+import { useEffect, useState, FormEvent } from "react";
+import { useLocation } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -12,6 +13,7 @@ import {
 import image108 from "@/assets/image 108.png"
 import image107 from "@/assets/image 107.png"
 import image96 from "@/assets/image 96.png"
+import { getSupportPaymentRedirectState } from "@/lib/supportPaymentRedirect";
 
 type DonationType = "ONE_TIME" | "MONTHLY";
 
@@ -27,6 +29,7 @@ type DonationSubmissionState = {
 };
 
 const Support = () => {
+  const location = useLocation();
   const [selectedDonationType, setSelectedDonationType] = useState<DonationType | null>(null);
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
@@ -39,6 +42,28 @@ const Support = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submissionState, setSubmissionState] = useState<DonationSubmissionState | null>(null);
+
+  useEffect(() => {
+    const redirectState = getSupportPaymentRedirectState(window.location.href);
+
+    if (!redirectState) {
+      return;
+    }
+
+    if (redirectState.type === "success") {
+      setIsSuccessModalOpen(true);
+    } else {
+      setFailedTransactionMessage(redirectState.message);
+      setIsFailedModalOpen(true);
+    }
+
+    const nextUrl = new URL(window.location.href);
+    nextUrl.searchParams.delete("payment");
+    if (nextUrl.pathname.startsWith("/support/")) {
+      nextUrl.pathname = "/support";
+    }
+    window.history.replaceState({}, "", `${nextUrl.pathname}${nextUrl.search}${nextUrl.hash}`);
+  }, [location.search]);
 
   const handleSupportClick = (type: DonationType) => {
     setSelectedDonationType(type);
