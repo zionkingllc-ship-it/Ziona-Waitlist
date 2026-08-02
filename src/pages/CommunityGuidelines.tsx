@@ -1,7 +1,10 @@
 import LegalDocumentPage, { type LegalSection } from "@/components/LegalDocumentPage";
 
-const termsIntroContent = [
-  "And the Light shineth in darkness; and the darkness comprehended it not.”  Gospel of John 1:5",
+const communityIntroContent = [
+  {
+    heading: "Our Foundation",
+    intro: "And the Light shineth in darkness; and the darkness comprehended it not. — Gospel of John 1:5\n\nZiona exists to be a light-filled space in a noisy digital world.\n\nWe are a Christian-first social platform where users can create, share, and engage with faith-based content in a safe, respectful, and values-aligned environment. You can share your faith through short-form video, photos, image carousels, text posts, and Bible verse posts.\n\nEvery post, comment, and interaction should reflect Christ-like character — even in disagreement.",
+  },
 ] as const;
 
 const communityGuidelineSections: LegalSection[] = [
@@ -237,7 +240,7 @@ const CommunityGuidelines = () => {
   return (
     <LegalDocumentPage
       title="Community guidelines"
-      introContent={termsIntroContent}
+      introContent={communityIntroContent}
       introClassName="text-xs leading-5 space-y-0.5"
       sections={communityGuidelineSections} />
   );
