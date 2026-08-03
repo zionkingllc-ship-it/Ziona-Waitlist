@@ -26,7 +26,7 @@ You will need Node.js and npm installed on your machine.
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Bhuchee/Ziona-Waitlist.git
+   [https://github.com/zionkingllc-ship-it/Ziona-Waitlist]
    ```
 
 2. Navigate into the project directory:
