@@ -1,6 +1,18 @@
 {
     "rewrites": [
         {
+            "source": "/.well-known/apple-app-site-association",
+            "destination": "https://api.ziona.app/.well-known/apple-app-site-association"
+        },
+        {
+            "source": "/.well-known/assetlinks.json",
+            "destination": "https://api.ziona.app/.well-known/assetlinks.json"
+        },
+        {
+            "source": "/post/:id",
+            "destination": "https://api.ziona.app/post/:id/"
+        },
+        {
             "source": "/(.*)",
             "destination": "/index.html"
         }
