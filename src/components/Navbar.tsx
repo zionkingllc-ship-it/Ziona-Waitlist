@@ -8,8 +8,17 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Menu } from "lucide-react";
+import { TbBrandAppleFilled } from "react-icons/tb";
 import { Link, NavLink } from "react-router-dom";
+import playstore from "@/assets/Playstore.png";
 
 const navLinks = [
   { label: "Home", to: "/", end: true },
@@ -46,10 +55,45 @@ const Navbar = () => {
                 </NavLink>
               ))}
             </div>
-            <div className="flex flex-1 justify-end">
-              <Button variant="navbarCta" className="hidden font-inter sm:inline-flex">
-                Download the app
-              </Button>
+            <div className="flex flex-1 justify-end items-center gap-2">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="navbarCta" className="hidden font-inter sm:inline-flex">
+                    Download the app
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-72 bg-white text-neutral-text-primary shadow-lg">
+                  <DropdownMenuLabel>Select store</DropdownMenuLabel>
+                  <DropdownMenuItem asChild>
+                    <a
+                      href="https://apps.apple.com/ng/app/ziona/id6768301878"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex items-center gap-3 rounded-xl px-4 py-3 hover:bg-neutral-background-secondary"
+                    >
+                      <TbBrandAppleFilled className="h-5 w-5 text-black" />
+                      <div className="flex flex-col leading-tight">
+                        <span className="text-[10px] uppercase tracking-[0.18em] text-neutral-text-secondary">Download on the</span>
+                        <span className="text-sm font-semibold">App Store</span>
+                      </div>
+                    </a>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <a
+                      href="https://play.google.com/store/apps/details?id=com.zionking.ziona"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex items-center gap-3 rounded-xl px-4 py-3 hover:bg-neutral-background-secondary"
+                    >
+                      <img src={playstore} alt="Play Store" className="h-6 w-6" loading="lazy" decoding="async" />
+                      <div className="flex flex-col leading-tight">
+                        <span className="text-[10px] uppercase tracking-[0.18em] text-neutral-text-secondary">Get it on</span>
+                        <span className="text-sm font-semibold">Google Play</span>
+                      </div>
+                    </a>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
               <div className="lg:hidden">
                 <Sheet>
                   <SheetTrigger asChild>
