@@ -97,6 +97,7 @@ const LegalDocumentPage = ({ title, introContent, introClassName, sections }: Le
       <main className="px-4 lg:px-20">
         <section className="py-10 lg:py-15">
           <h1 className="text-start font-bree text-3xl text-[#1a131c] lg:text-6xl">{title}</h1>
+          
           <div className="mt-10 grid gap-10 lg:grid-cols-[18rem_minmax(0,1fr)] lg:items-start lg:gap-12">
             <aside className="hidden lg:block">
               <div className="sticky top-32 space-y-2">
@@ -120,7 +121,7 @@ const LegalDocumentPage = ({ title, introContent, introClassName, sections }: Le
 
             <div className={introContent?.length ? "space-y-6" : "space-y-10"}>
               {introContent?.length ? (
-                <div className={`space-y-1 text-xs font-normal leading-5 text-black ${introClassName ?? ""}`.trim()}>
+                <div className={`space-y-1 text-base text-[#1a131c] lg:text-lg font-normal leading-5 ${introClassName ?? ""}`.trim()}>
                   {introContent.map((block, index) => renderContentBlock(block, `intro-${index}`))}
                 </div>
               ) : null}

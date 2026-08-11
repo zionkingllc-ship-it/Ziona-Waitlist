@@ -1,5 +1,15 @@
 import LegalDocumentPage, { type LegalSection } from "@/components/LegalDocumentPage";
 
+const privacyIntroContent = [
+    {
+        intro: "Effective Date: 03/08/2024",
+        emphasized: true,
+    },
+    {
+        intro: "Ziona (\"Ziona,\" \"we,\" \"us,\" or \"our\") is a mobile-first social platform owned and operated by ZionKing LLC, a limited liability company organized in the United States. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use the Ziona mobile application and related services (the \"Service\"). By using Ziona, you agree to the terms of this Privacy Policy",
+    },
+] as const;
+
 const privacySections: LegalSection[] = [
     {
         id: "who-we-are",
@@ -94,7 +104,7 @@ const privacySections: LegalSection[] = [
     },
     {
         id: "your-rights-and-choices",
-        title: "5. Analytics &amp; Tracking",
+        title: "5. Analytics & Tracking",
         content: [
             "Ziona uses internal analytics and performance monitoring tools to understand user engagement, improve features, and maintain reliability",
             "We do not use third-party advertising networks in the current version of the Service.",
@@ -124,7 +134,7 @@ const privacySections: LegalSection[] = [
     },
     {
         id: "community-safety-and-enforcement",
-        title: "7. Community Safety &amp; Enforcement",
+        title: "7. Community Safety & Enforcement",
         content: [
             "We may review user activity and content to enforce community guidelines and protect the integrity of the platform.",
             "We may suspend or terminate accounts that violate our policies."
@@ -200,7 +210,7 @@ const privacySections: LegalSection[] = [
 ] as const;
 
 const PrivacyPolicy = () => {
-    return <LegalDocumentPage title="Privacy policy" sections={privacySections} />;
+    return <LegalDocumentPage title="Privacy policy" introContent={privacyIntroContent} sections={privacySections} />;
 };
 
 export default PrivacyPolicy;

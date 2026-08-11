@@ -1,9 +1,13 @@
 import LegalDocumentPage, { type LegalSection } from "@/components/LegalDocumentPage";
 
 const termsIntroContent = [
-  "These Terms of Use (\"Terms\") govern your access to and use of the Ziona mobile application and related services (the \"Service\").",
-  "Ziona is owned and operated by ZionKing LLC (\"Ziona,\" \"we,\" \"us,\" or \"our\").",
-  "By creating an account or using the Service, you agree to be bound by these Terms.",
+  {
+    intro: "Effective Date: [Insert Date]",
+    emphasized: true,
+  },
+  {
+    intro: "These Terms of Service (\"Terms\") govern your access to and use of the Ziona mobile application and related services (the \"Service\").\n\nZiona is owned and operated by ZionKing LLC (\"Ziona,\" \"we,\" \"us,\" or \"our\").\n\nBy creating an account or using the Service, you agree to be bound by these Terms.",
+  },
 ] as const;
 
 const termsSections: LegalSection[] = [
