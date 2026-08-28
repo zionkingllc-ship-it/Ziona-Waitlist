@@ -2,15 +2,19 @@
     "rewrites": [
         {
             "source": "/.well-known/apple-app-site-association",
-            "destination": "https://api.ziona.app/.well-known/apple-app-site-association"
+            "destination": "/api/deep-link?route=apple-app-site-association"
         },
         {
             "source": "/.well-known/assetlinks.json",
-            "destination": "https://api.ziona.app/.well-known/assetlinks.json"
+            "destination": "/api/deep-link?route=assetlinks"
         },
         {
             "source": "/post/:id",
-            "destination": "https://api.ziona.app/post/:id/"
+            "destination": "/api/deep-link?route=post&id=:id"
+        },
+        {
+            "source": "/profile/:id",
+            "destination": "/api/deep-link?route=profile&id=:id"
         },
         {
             "source": "/(.*)",
