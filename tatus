@@ -1,0 +1,32 @@
+[33ma649252[m[33m ([m[1;31mupstream/main[m[33m, [m[1;31mupstream/HEAD[m[33m)[m Update Support.tsx
+[33mb1a5110[m Merge pull request #22 from zionkingllc-ship-it/staging
+[33m643c8e9[m[33m ([m[1;31mupstream/staging[m[33m, [m[1;32mstaging[m[33m)[m Merge pull request #21 from zionkingllc-ship-it/staging-frontend
+[33m45a1ee9[m[33m ([m[1;31mupstream/staging-frontend[m[33m, [m[1;32mstaging-frontend[m[33m)[m feat: implement dropdown menu for app download links in Navbar component
+[33m26c63ce[m Merge pull request #20 from zionkingllc-ship-it/staging
+[33m4cced2a[m Merge pull request #19 from zionkingllc-ship-it/staging-frontend
+[33me9dcf78[m Merge pull request #18 from zionkingllc-ship-it/staging
+[33m25843ea[m Merge pull request #17 from zionkingllc-ship-it/zionkingllc-ship-it-patch-1
+[33m78f4309[m fix(deeplinks): proxy .well-known and /post to the API so app links verify
+[33ma3dc7b9[m Update README.md
+[33m73fd3e9[m feat: update legal documents with structured intro content and improved formatting
+[33mfe85487[m Merge pull request #16 from zionkingllc-ship-it/main
+[33mffefb06[m Merge pull request #15 from zionkingllc-ship-it/staging-frontend
+[33mcfaac9f[m Merge pull request #14 from zionkingllc-ship-it/main
+[33meed507f[m feat: add support for payment redirect handling and success/cancel routes
+[33m5d9db01[m Merge pull request #13 from zionkingllc-ship-it/staging
+[33mf2751a5[m Merge pull request #12 from zionkingllc-ship-it/staging-frontend
+[33m203fe45[m feat: add Vercel configuration for URL rewrites to serve index.html
+[33mfed1790[m Merge pull request #11 from zionkingllc-ship-it/main
+[33mfb1f435[m Merge pull request #10 from zionkingllc-ship-it/staging
+[33mf4acc5d[m Merge pull request #9 from zionkingllc-ship-it/staging-frontend
+[33mffd337d[m feat: add failed transaction handling and modal to Support component
+[33m9559afc[m Merge pull request #8 from zionkingllc-ship-it/staging-frontend
+[33m0fbc3c0[m Merge branch 'staging' into staging-frontend
+[33m9519f49[m feat: implement donation form with validation and submission handling
+[33m4318a79[m Merge pull request #6 from SamsonI95/main
+[33mb24e80d[m perf: add image loading attrs, update deps and setup imagetools
+[33m16efd5b[m feat: refactor Navbar component structure and enhance mobile navigation
+[33md72f0ea[m Merge pull request #3 from SamsonI95/staging
+[33mb4b4e38[m Merge pull request #4 from zionkingllc-ship-it/staging-frontend
+[33m2167b64[m feat: update CircleSlider autoplay functionality and improve layout in WhatWeDoSection
+[33mf29dc6c[m Merge pull request #2 from SamsonI95/main

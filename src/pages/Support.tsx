@@ -90,7 +90,7 @@ const Support = () => {
 
     try {
       // const baseUrl = import.meta.env.VITE_GRAPHQL_URL?.replace("/graphql", "") || "";
-      const baseUrl = "https://api.staging.ziona.app/";
+      const baseUrl = "https://api.ziona.app/";
       const endpoint = selectedDonationType === "ONE_TIME"
         ? `${baseUrl}api/payments/support-once`
         : `${baseUrl}api/payments/support-monthly`;
