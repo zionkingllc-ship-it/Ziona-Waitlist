@@ -11,7 +11,7 @@ const ContactSection = () => {
         <p className="text-base lg:text-2xl font-normal text-center">Explore your faith through videos, images, and scripture. As a leading app for christians, Ziona lets you create content that inspires, uplifts, and connects believers around the world.</p>
         <div className="flex w-full self-center items-center justify-center gap-3 lg:gap-4 lg:justify-center">
           {/* App Store */}
-          <button className="flex items-center justify-center gap-2 rounded-2xl bg-black px-3 py-2 text-white transition hover:scale-[1.02] hover:opacity-90 lg:gap-3 lg:px-5 lg:py-3">
+          <a href="https://apps.apple.com/ng/app/ziona/id6768301878" className="flex items-center justify-center gap-2 rounded-2xl bg-black px-3 py-2 text-white transition hover:scale-[1.02] hover:opacity-90 lg:gap-3 lg:px-5 lg:py-3">
             <TbBrandAppleFilled className="h-5 w-5 text-white lg:h-7 lg:w-7" />
 
             <div className="flex flex-col items-start leading-tight">
@@ -23,11 +23,11 @@ const ContactSection = () => {
                 App Store
               </span>
             </div>
-          </button>
+          </a>
 
           {/* Google Play */}
-          <button className="flex items-center justify-center gap-2 rounded-2xl bg-black px-3 py-2 text-white transition hover:scale-[1.02] hover:opacity-90 lg:gap-3 lg:px-5 lg:py-3">
-            <img src={playstore} alt="playstore" className="h-5 w-5 lg:h-7 lg:w-7" loading="lazy" decoding="async" />
+          <a href="https://play.google.com/store/apps/details?id=com.zionking.ziona" className="flex items-center justify-center gap-2 rounded-2xl bg-black px-3 py-2 text-white transition hover:scale-[1.02] hover:opacity-90 lg:gap-3 lg:px-5 lg:py-3">
+            <img src={playstore} alt="playstore" className="h-5 w-5 lg:h-7 lg:w-7" loading="eager" decoding="async" />
 
             <div className="flex flex-col items-start leading-tight">
               <span className="text-[9px] font-medium uppercase tracking-wide text-white/70 lg:text-[11px]">
@@ -38,7 +38,7 @@ const ContactSection = () => {
                 Google Play
               </span>
             </div>
-          </button>
+          </a>
         </div>
       </div>
     </section>
